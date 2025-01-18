@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import '../App.css'
 import { Link } from "react-router-dom"
 
-const Users=()=>{
+const Login=()=>{
 
     const [users,setUsers]=useState([])
 
@@ -29,4 +29,4 @@ const Users=()=>{
     )
 }
 
-export default Users
+export default Login

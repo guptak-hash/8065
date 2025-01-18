@@ -8,9 +8,9 @@ import TaskDetails from './components/Tasks/TaskDetails';
 import Profile from './components/Profile/Profile';
 import Reports from './components/Reports/Reports';
 import Analytics from './components/Analytics/Analytics';
-import Login from './components/Login';
-import NotFound from './components/NotFound';
-import Unauthorized from './components/Unauthorized';
+import Login from './pages/Login';
+import NotFound from './pages/NotFound';
+import Unauthorized from './pages/Unauthorized';
 import './App.css';
 
 const App = () => {
@@ -74,24 +74,3 @@ const App = () => {
 };
 
 export default App;
-
-// Update Layout.jsx to work with routing
-import React from 'react';
-import { Outlet } from 'react-router-dom';
-import Sidebar from './Sidebar';
-import Header from './Header';
-import './Layout.css';
-
-const Layout = () => {
-  return (
-    <div className="layout">
-      <Header />
-      <div className="layout-content">
-        <Sidebar />
-        <main className="main-content">
-          <Outlet />
-        </main>
-      </div>
-    </div>
-  );
-};
