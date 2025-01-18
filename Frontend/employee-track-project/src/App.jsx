@@ -8,9 +8,9 @@ import TaskDetails from './components/Tasks/TaskDetails';
 import Profile from './components/Profile/Profile';
 import Reports from './components/Reports/Reports';
 import Analytics from './components/Analytics/Analytics';
-import Login from './pages/Login';
-import NotFound from './pages/NotFound';
-import Unauthorized from './pages/Unauthorized';
+import Login from './components/Login';
+import NotFound from './components/NotFound';
+import Unauthorized from './components/Unauthorized';
 import './App.css';
 
 const App = () => {
