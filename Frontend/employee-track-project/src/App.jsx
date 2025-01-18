@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { AppProvider } from './contexts/AppContext';
+import { AppProvider } from './context/AppContext';
 import Layout from './components/Layout/Layout';
-import EmployeeDashboard from './components/Dashboard/EmployeeDashboard';
+import EmployeeDashboard from './components/Dashboard/EmployerDashboard';
 import EmployerDashboard from './components/Dashboard/EmployerDashboard';
 import TaskDetails from './components/Tasks/TaskDetails';
 import Profile from './components/Profile/Profile';
