@@ -23,6 +23,7 @@ function App() {
     <Route path='/users' element={<Users/>}/>
     <Route path='/register' element={<Register/>}/>
     <Route path='/users/:id' element={<UserDetails/>}></Route>
+    <Route path='*' element={<NotFound/>}></Route>
     </Routes>
    
     </>

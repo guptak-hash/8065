@@ -2,7 +2,16 @@
 
 const Home=()=>{
     return (
-        <h1>Home</h1>
+        
+
+        <>
+        <form>
+            <input placeholder="type task" type="text"/>
+            <select>
+                <option>Assign To</option>
+            </select>
+        </form>
+        </>
     )
 }
 
