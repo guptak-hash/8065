@@ -1,32 +1,97 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import Navbar from './common/Navbar'
-import {Route,Routes} from 'react-router-dom'
-import Home from './pages/Home'
-import About from './pages/About'
-import Contact from './pages/Contact'
-import Users from './pages/Users'
-import Register from './pages/Register'
-import UserDetails from './pages/UserDetails'
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AppProvider } from './contexts/AppContext';
+import Layout from './components/Layout/Layout';
+import EmployeeDashboard from './components/Dashboard/EmployeeDashboard';
+import EmployerDashboard from './components/Dashboard/EmployerDashboard';
+import TaskDetails from './components/Tasks/TaskDetails';
+import Profile from './components/Profile/Profile';
+import Reports from './components/Reports/Reports';
+import Analytics from './components/Analytics/Analytics';
+import Login from './pages/Login';
+import NotFound from './pages/NotFound';
+import Unauthorized from './pages/Unauthorized';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-    <Navbar/>
-    <Routes>
-    <Route path='/' element={<Home/>}/>
-    <Route path='/about' element={<About/>}/>
-    <Route path='/contact' element={<Contact/>}/>
-    <Route path='/users' element={<Users/>}/>
-    <Route path='/register' element={<Register/>}/>
-    <Route path='/users/:id' element={<UserDetails/>}></Route>
-    </Routes>
-   
-    </>
-  )
-}
+    <BrowserRouter>
+      <AppProvider>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/unauthorized" element={<Unauthorized />} />
+          
+          {/* Protected Routes within Layout */}
+          <Route path="/" element={
+            <ProtectedRoute>
+              <Layout />
+            </ProtectedRoute>
+          }>
+            {/* Default redirect to dashboard */}
+            <Route index element={<Navigate to="/dashboard" replace />} />
+            
+            {/* Employee Routes */}
+            <Route path="dashboard" element={
+              <ProtectedRoute>
+                <EmployeeDashboard />
+              </ProtectedRoute>
+            } />
+            <Route path="tasks/:taskId" element={
+              <ProtectedRoute>
+                <TaskDetails />
+              </ProtectedRoute>
+            } />
+            <Route path="profile" element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            } />
 
-export default App
+            {/* Employer Routes */}
+            <Route path="employer" element={
+              <ProtectedRoute requiredRole="employer">
+                <EmployerDashboard />
+              </ProtectedRoute>
+            } />
+            <Route path="reports" element={
+              <ProtectedRoute requiredRole="employer">
+                <Reports />
+              </ProtectedRoute>
+            } />
+            <Route path="analytics" element={
+              <ProtectedRoute requiredRole="employer">
+                <Analytics />
+              </ProtectedRoute>
+            } />
+          </Route>
+
+          {/* 404 Route */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </AppProvider>
+    </BrowserRouter>
+  );
+};
+
+export default App;
+
+// Update Layout.jsx to work with routing
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import Sidebar from './Sidebar';
+import Header from './Header';
+import './Layout.css';
+
+const Layout = () => {
+  return (
+    <div className="layout">
+      <Header />
+      <div className="layout-content">
+        <Sidebar />
+        <main className="main-content">
+          <Outlet />
+        </main>
+      </div>
+    </div>
+  );
+};
