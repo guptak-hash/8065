@@ -16,7 +16,8 @@ const getAllEmployees = async (req, res) => {
 // Get all tasks
 const getAllTasks = async (req, res) => {
     try {
-        const tasks = await Task.find({ employeeId: req.employee.id }).sort({ date: -1 });
+        console.log('Employee ID:', req.employee.id);
+        const tasks = await Task.find({ employeeId: req.employee.id }).sort({ createdAt: -1 });
         res.json(tasks);
     } catch (err) {
         console.error(err.message);

@@ -24,7 +24,7 @@ const login = async (req, res) => {
         }
         const payload = {
             employee: {
-                _id: employee.id
+                id: employee.id.toString()
             }
         };
         jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '24h' }, (err, token) => {

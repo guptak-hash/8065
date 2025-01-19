@@ -2,7 +2,7 @@ const express = require('express');
 const register = require('../controllers/userRegisterController');
 const login = require('../controllers/userLoginController');
 const { getAllEmployees } = require('../controllers/getDetailsController');
-// const tokenAuth = require('../middleware/tokenAuthMiddleware');
+const tokenAuth = require('../middleware/tokenAuthMiddleware');
 const router = express.Router();
 
 // Register
