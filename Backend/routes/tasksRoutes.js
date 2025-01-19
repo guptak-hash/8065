@@ -5,8 +5,10 @@ const router = express.Router();
 
 // Get all tasks
 router.get('/', tokenAuth, getAllTasks);
+// router.get('/', getAllTasks);
 
 // Add a task
 router.post('/', tokenAuth, addTask);
+// router.post('/', addTask);
 
 module.exports = router;

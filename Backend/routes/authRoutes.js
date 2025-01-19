@@ -1,7 +1,7 @@
 const express = require('express');
 const register = require('../controllers/userRegisterController');
 const login = require('../controllers/userLoginController');
-const getAllEmployees = require('../controllers/getDetailsController');
+const { getAllEmployees } = require('../controllers/getDetailsController');
 // const tokenAuth = require('../middleware/tokenAuthMiddleware');
 const router = express.Router();
 
@@ -12,9 +12,9 @@ router.post('/register', register);
 router.post('/login', login);
 
 // Get all employees (protected route) WITH tokenAuth
-// router.get('/allUsers', tokenAuth, getAllEmployees);// some problem with this token verification
+router.get('/allUsers', tokenAuth, getAllEmployees);
 
 // Get all employees WITHOUT tokenAuth
-router.get('/allUsers', getAllEmployees);
+// router.get('/allUsers', getAllEmployees);
 
 module.exports = router;
