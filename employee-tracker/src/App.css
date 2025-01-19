@@ -89,7 +89,7 @@ ul {
   list-style: none;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(300px,3fr);
   gap: 1.5rem;
 }
 
@@ -195,3 +195,12 @@ li p:last-child {
       grid-template-columns: 1fr;
   }
 }
+
+
+
+
+
+
+
+
+

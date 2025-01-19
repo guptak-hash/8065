@@ -10,6 +10,7 @@ const Navbar=()=>{
                 <NavLink className="nav-link" to='/about'>About</NavLink>
                 <NavLink className="nav-link" to='/users'>Users</NavLink>
                 <NavLink className="nav-link" to='/contact'>Contact</NavLink>
+            
             </div>
             <NavLink to='/register'>Register</NavLink>
         </div>
