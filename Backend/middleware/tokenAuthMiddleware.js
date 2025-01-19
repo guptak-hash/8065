@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 module.exports = function (req, res, next) {
-    const token = req.header('x-auth-token');
+    const token = req.header('x-auth-token');// header key is x-auth-token, we can change it to anything we want to use as a key for token in header of request.
     if (!token) {
 
         return res.status(401)
